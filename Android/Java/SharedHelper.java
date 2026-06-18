@@ -3,19 +3,31 @@ import android.content.SharedPreferences;
 
 /*
  *   Created by: @AmirBahadorAmiri
- *   Created at: 2026-06-12 16:59:29
+ *   Update at: 2026-06-18 09:55:48
  *   Github: https://github.com/AmirBahadorAmiri
  */
 
 public class SharedHelper {
 
-    private final String SHARED_KEY = "SHARED_KEY";;
-    private final SharedPreferences sharedPreferences;
-    private final SharedPreferences.Editor sharedPreferencesEditor;
+    private static SharedHelper sharedHelper;
 
-    public SharedHelper(Context context) {
+    private static String SHARED_KEY = "AppleNote";;
+    private static SharedPreferences sharedPreferences;
+    private static SharedPreferences.Editor sharedPreferencesEditor;
+
+    private SharedHelper(Context context) {
         sharedPreferences = context.getSharedPreferences(SHARED_KEY, Context.MODE_PRIVATE);
         sharedPreferencesEditor = sharedPreferences.edit();
+    }
+
+    public static void init(Context context) {
+        if ( sharedHelper == null | sharedPreferences == null | sharedPreferencesEditor == null )
+            sharedHelper = new SharedHelper(context);
+    }
+
+    public static SharedHelper getInstance(Context context) {
+        init(context);
+        return sharedHelper;
     }
 
     public String readString(String key) {
@@ -23,7 +35,7 @@ public class SharedHelper {
     }
 
     public int readInt(String key) {
-        return sharedPreferences.getInt(key, 0);
+        return sharedPreferences.getInt(key, -1);
     }
 
     public Boolean readBoolean(String key) {
@@ -31,7 +43,7 @@ public class SharedHelper {
     }
 
     public Long readLong(String key) {
-        return sharedPreferences.getLong(key, 0);
+        return sharedPreferences.getLong(key, -1);
     }
 
     public void insert(String key, String value) {
