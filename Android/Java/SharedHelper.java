@@ -11,7 +11,7 @@ public class SharedHelper {
 
     private static SharedHelper sharedHelper;
 
-    private static String SHARED_KEY = "AppleNote";;
+    private static String SHARED_KEY = "AppleNote";
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor sharedPreferencesEditor;
 
