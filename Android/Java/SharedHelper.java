@@ -4,7 +4,7 @@ import android.content.SharedPreferences;
 /*
  *   Created by: @AmirBahadorAmiri
  *   Update at: 2026-06-18 09:55:48
- *   Github: https://github.com/AmirBahadorAmiri1
+ *   Github: https://github.com/AmirBahadorAmiri
  */
 
 public class SharedHelper {
